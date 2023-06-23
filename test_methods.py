@@ -27,6 +27,6 @@ for index, item in enumerate(items):
     print("Response Status Code:", response.status_code)
     if response.status_code != 200:
         print("Error: HTTP", response.status_code)
-        sys.exit(1)  # this will cause GitHub Actions to fail
+        sys.exit(1)
 
     print("Response Content:", response.content, "\n")
