@@ -1,7 +1,6 @@
 import requests
 import json
 import sys
-import time
 
 with open('rpc_methods.json', 'r') as file:
     json_data = json.load(file)
@@ -18,7 +17,8 @@ for index, item in enumerate(items):
     name = item['name']
     request = item['request']
     method = request['method']
-    url = request['url']
+    # replace devnet with local validator
+    url = request['url'].replace('https://api.devnet.solana.com', 'http://localhost:8899')
     headers = {header['key']: header['value'] for header in request['header']}
     body = request['body']['raw']
 
@@ -29,4 +29,3 @@ for index, item in enumerate(items):
     if response.status_code != 200:
         print("Error: HTTP", response.status_code)
         sys.exit(1)
-    time.sleep(2)

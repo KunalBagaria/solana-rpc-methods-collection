@@ -13,6 +13,14 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v3
 
+      - name: Install Solana CLI
+        run: |
+          sh -c "$(curl -sSfL https://release.solana.com/stable/install)"
+
+      - name: Start local validator
+        run: |
+          solana-test-validator --log
+
       - name: Set up Python
         uses: actions/setup-python@v3
         with:
