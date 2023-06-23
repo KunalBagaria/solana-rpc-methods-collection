@@ -1,6 +1,7 @@
 import requests
 import json
 import sys
+import time
 
 with open('rpc_methods.json', 'r') as file:
     json_data = json.load(file)
