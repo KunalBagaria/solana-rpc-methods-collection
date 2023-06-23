@@ -20,7 +20,7 @@ for index, item in enumerate(items):
     name = item['name']
     request = item['request']
     method = request['method']
-    # replaces devnet url with local validator
+    # replaces devnet urls with local validator
     url = request['url'].replace('https://api.devnet.solana.com', 'http://localhost:8899')
     headers = {header['key']: header['value'] for header in request['header']}
     body = request['body']['raw']

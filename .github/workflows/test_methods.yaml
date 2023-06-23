@@ -28,4 +28,4 @@ jobs:
 
       - name: Start local validator and Run Python Script
         run: |
-          solana-test-validator && python3 test_methods.py
+          solana-test-validator & python3 test_methods.py
