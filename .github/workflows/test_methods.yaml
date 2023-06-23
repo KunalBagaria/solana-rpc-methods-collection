@@ -2,6 +2,7 @@ name: Run Python Script
 on:
   push:
     paths:
+      - 'test_methods.py'
       - 'rpc_methods.json'
 
 jobs:
