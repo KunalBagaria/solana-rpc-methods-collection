@@ -1,6 +1,9 @@
 import requests
 import json
 import sys
+import time
+
+time.sleep(5) # wait for validator to start
 
 with open('rpc_methods.json', 'r') as file:
     json_data = json.load(file)
