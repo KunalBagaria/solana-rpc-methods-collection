@@ -28,5 +28,4 @@ for index, item in enumerate(items):
     if response.status_code != 200:
         print("Error: HTTP", response.status_code)
         sys.exit(1)
-
-    print("Response Content:", response.content, "\n")
+    time.sleep(2)
