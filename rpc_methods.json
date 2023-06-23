@@ -1,0 +1,1037 @@
+{
+	"info": {
+		"_postman_id": "0a6ce802-43cf-4dcc-8711-686a2153881e",
+		"name": "Solana JSON RPC Methods",
+		"description": "All Solana JSON RPC methods from the official [documentation](https://docs.solana.com/api/http#getaccountinfo)",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json",
+		"_exporter_id": "28090121",
+		"_collection_link": "https://www.postman.com/heybolt/workspace/my-workspace/collection/28090121-0a6ce802-43cf-4dcc-8711-686a2153881e?action=share&creator=28090121&source=collection_link"
+	},
+	"item": [
+		{
+			"name": "getAccountInfo",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "\n  {\n    \"jsonrpc\": \"2.0\",\n    \"id\": 1,\n    \"method\": \"getAccountInfo\",\n    \"params\": [\n      \"vines1vzrYbzLMRdu58ou5XTby4qAqVRLmqo36NKPTg\",\n      {\n        \"encoding\": \"base58\"\n      }\n    ]\n  }\n"
+				},
+				"url": "https://api.devnet.solana.com",
+				"description": "Returns all information associated with the account of provided Pubkey\n\n### Parameters:\n\n`string` required\n\nPubkey of account to query, as base-58 encoded string\n\n`object` optional\n\nConfiguration object containing the following fields:\n\n[commitment](https://docs.solana.com/api/http#configuring-state-commitment) `string` optional\n\n[encoding](https://docs.solana.com/api/http#parsed-responses) `string` optional\n\nEncoding format for Account data\n\nValues: `base58base64base64+zstdjsonParsed`\n\nDetails\n\ndataSlice `object` optional\n\nRequest a slice of the account's data.\n\n- `length:` \\- number of bytes to return\n- `offset:` \\- byte offset from which to start reading\n\ninfo\n\nData slicing is only available for `base58`, `base64`, or `base64+zstd` encodings.\n\nminContextSlot `number` optional\n\nThe minimum slot that the request can be evaluated at"
+			},
+			"response": []
+		},
+		{
+			"name": "getBalance",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "\n  {\n    \"jsonrpc\": \"2.0\", \"id\": 1,\n    \"method\": \"getBalance\",\n    \"params\": [\n      \"83astBRguLMdt2h5U1Tpdq5tjFoJ6noeGwaY3mDLVcri\"\n    ]\n  }\n"
+				},
+				"url": "https://api.devnet.solana.com",
+				"description": "## getBalance\n\nReturns the balance of the account of provided Pubkey\n\n### Parameters:\n\n`string` required\n\nPubkey of account to query, as base-58 encoded string\n\n`object` optional\n\nConfiguration object containing the following fields:\n\n[commitment](https://docs.solana.com/api/http#configuring-state-commitment) `string` optional\n\nminContextSlot `number` optional\n\nThe minimum slot that the request can be evaluated at"
+			},
+			"response": []
+		},
+		{
+			"name": "getBlockHeight",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "\n  {\n    \"jsonrpc\":\"2.0\",\"id\":1,\n    \"method\":\"getBlockHeight\"\n  }\n"
+				},
+				"url": "https://api.devnet.solana.com",
+				"description": "## getBlockHeight\n\nReturns the current block height of the node\n\n### Parameters:\n\n`object` optional\n\nConfiguration object containing the following fields:\n\n[commitment](https://docs.solana.com/api/http#configuring-state-commitment) `string` optional\n\nminContextSlot `number` optional\n\nThe minimum slot that the request can be evaluated at"
+			},
+			"response": []
+		},
+		{
+			"name": "getBlock",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "\n  {\n    \"jsonrpc\": \"2.0\",\"id\":1,\n    \"method\":\"getBlock\",\n    \"params\": [\n      224109018,\n      {\n        \"encoding\": \"json\",\n        \"maxSupportedTransactionVersion\":0,\n        \"transactionDetails\":\"full\",\n        \"rewards\":false\n      }\n    ]\n  }\n"
+				},
+				"url": "https://api.devnet.solana.com",
+				"description": "## getBlock\n\nReturns identity and transaction information about a confirmed block in the ledger\n\n### Parameters:\n\n`u64` required\n\nslot number, as `u64` integer\n\n`object` optional\n\nConfiguration object containing the following fields:\n\n[commitment](https://docs.solana.com/api/http#configuring-state-commitment) `string` optionalDefault: `finalized`\n\n- the default is `finalized`\n- `processed` is not supported.\n\n[encoding](https://docs.solana.com/api/http#parsed-responses) `string` optionalDefault: `json`\n\nencoding format for each returned Transaction\n\nValues: `jsonjsonParsedbase58base64`\n\nDetails\n\ntransactionDetails `string` optionalDefault: `full`\n\nlevel of transaction detail to return\n\nValues: `fullaccountssignaturesnone`\n\nDetails\n\nmaxSupportedTransactionVersion `number` optional\n\nthe max transaction version to return in responses.\n\nDetails\n\nrewards `bool` optional\n\nwhether to populate the \\`rewards\\` array. If parameter not provided, the default includes rewards."
+			},
+			"response": []
+		},
+		{
+			"name": "getBlockProduction",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "\n  {\"jsonrpc\":\"2.0\",\"id\":1, \"method\":\"getBlockProduction\"}\n"
+				},
+				"url": "https://api.devnet.solana.com",
+				"description": "## getBlockProduction\n\nReturns recent block production information from the current or previous epoch.\n\n### Parameters:\n\n`object` optional\n\nConfiguration object containing the following fields:\n\n[commitment](https://docs.solana.com/api/http#configuring-state-commitment) `string` optional\n\nidentity `string` optional\n\nOnly return results for this validator identity (base-58 encoded)\n\nrange `object` optional\n\nSlot range to return block production for. If parameter not provided, defaults to current epoch.\n\n- `firstSlot:` \\- first slot to return block production information for (inclusive)\n- (optional) `lastSlot:` \\- last slot to return block production information for (inclusive). If parameter not provided, defaults to the highest slot"
+			},
+			"response": []
+		},
+		{
+			"name": "getBlockCommitment",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "\n  {\n    \"jsonrpc\": \"2.0\", \"id\": 1,\n    \"method\": \"getBlockCommitment\",\n    \"params\":[5]\n  }\n"
+				},
+				"url": "https://api.devnet.solana.com",
+				"description": "Returns commitment for particular block\n\n### Parameters:\n\n`u64` required\n\nblock number, identified by Slot"
+			},
+			"response": []
+		},
+		{
+			"name": "getBlocks",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "\n  {\n    \"jsonrpc\": \"2.0\", \"id\": 1,\n    \"method\": \"getBlocks\",\n    \"params\": [\n      5, 10\n    ]\n  }\n"
+				},
+				"url": "https://api.devnet.solana.com",
+				"description": "Returns a list of confirmed blocks between two slots\n\n### Parameters:\n\n`u64` required\n\nstart_slot, as `u64` integer\n\n`u64` optional\n\nend_slot, as `u64` integer (must be no more than 500,000 blocks higher than the \\`start_slot\\`)\n\n`object` optional\n\nConfiguration object containing the following fields:\n\n[commitment](https://docs.solana.com/api/http#configuring-state-commitment) `string` optionalDefault: `finalized`\n\n- \"processed\" is not supported"
+			},
+			"response": []
+		},
+		{
+			"name": "getBlocksWithLimit",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "\n  {\n    \"jsonrpc\": \"2.0\",\n    \"id\":1,\n    \"method\":\"getBlocksWithLimit\",\n    \"params\":[5, 3]\n  }\n"
+				},
+				"url": "https://api.devnet.solana.com",
+				"description": "Returns a list of confirmed blocks starting at the given slot\n\n### Parameters:\n\n`u64` required\n\nstart_slot, as `u64` integer\n\n`u64` optional\n\nlimit, as `u64` integer (must be no more than 500,000 blocks higher than the `start_slot`)\n\n`object` optional\n\nConfiguration object containing the following field:\n\n[commitment](https://docs.solana.com/api/http#configuring-state-commitment) `string` optionalDefault: `finalized`\n\n- \"processed\" is not supported"
+			},
+			"response": []
+		},
+		{
+			"name": "getBlockTime",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "\n  {\n    \"jsonrpc\":\"2.0\", \"id\":1,\n    \"method\": \"getBlockTime\",\n    \"params\":[224109018]\n  }\n"
+				},
+				"url": "https://api.devnet.solana.com",
+				"description": "Returns the estimated production time of a block.\n\n### Parameters:\n\n`u64` required\n\nblock number, identified by Slot"
+			},
+			"response": []
+		},
+		{
+			"name": "getClusterNodes",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "\n  {\n    \"jsonrpc\": \"2.0\", \"id\": 1,\n    \"method\": \"getClusterNodes\"\n  }\n"
+				},
+				"url": "https://api.devnet.solana.com",
+				"description": "Returns information about all the nodes participating in the cluster\n\n### Parameters:\n\n**None**"
+			},
+			"response": []
+		},
+		{
+			"name": "getEpochInfo",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "\n  {\"jsonrpc\":\"2.0\",\"id\":1, \"method\":\"getEpochInfo\"}\n"
+				},
+				"url": "https://api.devnet.solana.com",
+				"description": "Returns information about the current epoch\n\n### Parameters:\n\n`object` optional\n\nConfiguration object containing the following fields:\n\n[commitment](https://docs.solana.com/api/http#configuring-state-commitment) `string` optional\n\nminContextSlot `number` optional\n\nThe minimum slot that the request can be evaluated at"
+			},
+			"response": []
+		},
+		{
+			"name": "getEpochSchedule",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "\n  {\n    \"jsonrpc\":\"2.0\",\"id\":1,\n    \"method\":\"getEpochSchedule\"\n  }\n"
+				},
+				"url": "https://api.devnet.solana.com",
+				"description": "Returns the epoch schedule information from this cluster's genesis config\n\n### Parameters:\n\n**None**"
+			},
+			"response": []
+		},
+		{
+			"name": "getFeeForMessage",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "\n{\n  \"id\":1,\n  \"jsonrpc\":\"2.0\",\n  \"method\":\"getFeeForMessage\",\n  \"params\":[\n    \"AQABAgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEBAQAA\",\n    {\n      \"commitment\":\"processed\"\n    }\n  ]\n}\n"
+				},
+				"url": "https://api.devnet.solana.com",
+				"description": "Get the fee the network will charge for a particular Message\n\ncaution\n\n**NEW: This method is only available in solana-core v1.9 or newer.**\n\n### Parameters:\n\n`string` required\n\nBase-64 encoded Message\n\n`object` optional\n\nConfiguration object containing the following fields:\n\n[commitment](https://docs.solana.com/api/http#configuring-state-commitment) `string` optional\n\nminContextSlot `number` optional\n\nThe minimum slot that the request can be evaluated at"
+			},
+			"response": []
+		},
+		{
+			"name": "getFirstAvailableBlock",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "\n  {\n    \"jsonrpc\":\"2.0\",\"id\":1,\n    \"method\":\"getFirstAvailableBlock\"\n  }\n"
+				},
+				"url": "https://api.devnet.solana.com",
+				"description": "Returns the slot of the lowest confirmed block that has not been purged from the ledger\n\n### Parameters:\n\n**None**"
+			},
+			"response": []
+		},
+		{
+			"name": "getGenesisHash",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "\n  {\"jsonrpc\":\"2.0\",\"id\":1, \"method\":\"getGenesisHash\"}\n"
+				},
+				"url": "https://api.devnet.solana.com",
+				"description": "Returns the genesis hash\n\n### Parameters:\n\n**None**"
+			},
+			"response": []
+		},
+		{
+			"name": "getHealth",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "\n  {\"jsonrpc\":\"2.0\",\"id\":1, \"method\":\"getHealth\"}\n"
+				},
+				"url": "https://api.devnet.solana.com",
+				"description": "Returns the current health of the node.\n\n> caution \n  \n> If one or more `--known-validator` arguments are provided to `solana-validator` - \"ok\" is returned  \nwhen the node has within `HEALTH_CHECK_SLOT_DISTANCE` slots of the highest known validator,  \notherwise an error is returned. \"ok\" is always returned if no known validators are provided. \n  \n\n### Parameters:\n\n**None**"
+			},
+			"response": []
+		},
+		{
+			"name": "getHighestSnapshotSlot",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "\n  {\"jsonrpc\":\"2.0\",\"id\":1,\"method\":\"getHighestSnapshotSlot\"}\n"
+				},
+				"url": "https://api.devnet.solana.com",
+				"description": "Returns the highest slot information that the node has snapshots for.\n\nThis will find the highest full snapshot slot, and the highest incremental  \nsnapshot slot _based on_ the full snapshot slot, if there is one.\n\n> caution \n  \n> NEW: This method is only available in solana-core v1.9 or newer. Please use  \n[getSnapshotSlot](https://docs.solana.com/api/http#getsnapshotslot) for solana-core v1.8 \n  \n\n### Parameters:\n\n**None**"
+			},
+			"response": []
+		},
+		{
+			"name": "getIdentity",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "\n  {\"jsonrpc\":\"2.0\",\"id\":1, \"method\":\"getIdentity\"}\n"
+				},
+				"url": "https://api.devnet.solana.com",
+				"description": "Returns the identity pubkey for the current node\n\n### Parameters:\n\n**None**"
+			},
+			"response": []
+		},
+		{
+			"name": "getInflationGovernor",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "\n  {\"jsonrpc\":\"2.0\",\"id\":1, \"method\":\"getInflationGovernor\"}\n"
+				},
+				"url": "https://api.devnet.solana.com",
+				"description": "Returns the current inflation governor\n\n### Parameters:\n\n`object` optional\n\nConfiguration object containing the following fields:\n\n[commitment](https://docs.solana.com/api/http#configuring-state-commitment) `string` optional"
+			},
+			"response": []
+		},
+		{
+			"name": "getInflationRate",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "\n  {\"jsonrpc\":\"2.0\",\"id\":1, \"method\":\"getInflationRate\"}\n"
+				},
+				"url": "https://api.devnet.solana.com",
+				"description": "Returns the specific inflation values for the current epoch\n\n### Parameters:\n\n**None**"
+			},
+			"response": []
+		},
+		{
+			"name": "getInflationReward",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "\n  {\n    \"jsonrpc\": \"2.0\",\n    \"id\": 1,\n    \"method\": \"getInflationReward\",\n    \"params\": [\n      [\n        \"6dmNQ5jwLeLk5REvio1JcMshcbvkYMwy26sJ8pbkvStu\",\n        \"BGsqMegLpV6n6Ve146sSX2dTjUMj3M92HnU8BbNRMhF2\"\n      ],\n      {\"epoch\": 224109018}\n    ]\n  }\n"
+				},
+				"url": "https://api.devnet.solana.com",
+				"description": "Returns the inflation / staking reward for a list of addresses for an epoch\n\n### Parameters:\n\n`array` optional\n\nAn array of addresses to query, as base-58 encoded strings\n\n`object` optional\n\nConfiguration object containing the following fields:\n\n[commitment](https://docs.solana.com/api/http#configuring-state-commitment) `string` optional\n\nepoch `u64` optional\n\nAn epoch for which the reward occurs. If omitted, the previous epoch will be used\n\nminContextSlot `number` optional\n\nThe minimum slot that the request can be evaluated at"
+			},
+			"response": []
+		},
+		{
+			"name": "getLargestAccounts",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "\n  {\"jsonrpc\":\"2.0\",\"id\":1, \"method\":\"getLargestAccounts\"}\n"
+				},
+				"url": "https://api.devnet.solana.com",
+				"description": "Returns the 20 largest accounts, by lamport balance (results may be cached up to two hours)\n\n### Parameters:\n\n`object` optional\n\nConfiguration object containing the following fields:\n\n[commitment](https://docs.solana.com/api/http#configuring-state-commitment) `string` optional\n\nfilter `string` optional\n\nfilter results by account type\n\nValues: `circulatingnonCirculating`"
+			},
+			"response": []
+		},
+		{
+			"name": "getLatestBlockhash",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "\n  {\n    \"id\":1,\n    \"jsonrpc\":\"2.0\",\n    \"method\":\"getLatestBlockhash\",\n    \"params\":[\n      {\n        \"commitment\":\"processed\"\n      }\n    ]\n  }\n"
+				},
+				"url": "https://api.devnet.solana.com",
+				"description": "Returns the latest blockhash\n\ncaution\n\nNEW: This method is only available in solana-core v1.9 or newer. Please use  \n[getRecentBlockhash](https://docs.solana.com/api/http#getrecentblockhash) for solana-core v1.8\n\n### Parameters:\n\n`object` optional\n\nConfiguration object containing the following fields:\n\n[commitment](https://docs.solana.com/api/http#configuring-state-commitment) `string` optional\n\nminContextSlot `number` optional\n\nThe minimum slot that the request can be evaluated at"
+			},
+			"response": []
+		},
+		{
+			"name": "getLeaderSchedule",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "\n  {\n    \"jsonrpc\": \"2.0\",\n    \"id\": 1,\n    \"method\": \"getLeaderSchedule\",\n    \"params\": [\n      null,\n      {\n        \"identity\": \"4Qkev8aNZcqFNSRhQzwyLMFSsi94jHqE8WNVTJzTP99F\"\n      }\n    ]\n  }\n"
+				},
+				"url": "https://api.devnet.solana.com",
+				"description": "Returns the leader schedule for an epoch\n\n### Parameters:\n\n`u64` optional\n\nFetch the leader schedule for the epoch that corresponds to the provided slot.\n\n- If unspecified, the leader schedule for the current epoch is fetched\n    \n\n`object` optional\n\nConfiguration object containing the following fields:\n\n[commitment](https://docs.solana.com/api/http#configuring-state-commitment) `string` optional\n\nidentity `string` optional\n\nOnly return results for this validator identity (base-58 encoded)"
+			},
+			"response": []
+		},
+		{
+			"name": "getMaxRetransmitSlot",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "\n  {\"jsonrpc\":\"2.0\",\"id\":1, \"method\":\"getMaxRetransmitSlot\"}\n"
+				},
+				"url": "https://api.devnet.solana.com",
+				"description": "Get the max slot seen from retransmit stage.\n\n### Parameters:\n\n**None**"
+			},
+			"response": []
+		},
+		{
+			"name": "getMaxShredInsertSlot",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "\n  {\"jsonrpc\":\"2.0\",\"id\":1, \"method\":\"getMaxShredInsertSlot\"}\n"
+				},
+				"url": "https://api.devnet.solana.com",
+				"description": "Get the max slot seen from after shred insert.\n\n### Parameters:\n\n**None**"
+			},
+			"response": []
+		},
+		{
+			"name": "getMinimumBalanceForRentExemption",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "\n  {\n    \"jsonrpc\": \"2.0\", \"id\": 1,\n    \"method\": \"getMinimumBalanceForRentExemption\",\n    \"params\": [50]\n  }\n"
+				},
+				"url": "https://api.devnet.solana.com",
+				"description": "Returns minimum balance required to make account rent exempt.\n\n### Parameters:\n\n`usize` optional\n\nthe Account's data length\n\n`object` optional\n\nConfiguration object containing the following fields:\n\n[commitment](https://docs.solana.com/api/http#configuring-state-commitment) `string` optional"
+			},
+			"response": []
+		},
+		{
+			"name": "getMultipleAccounts",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "\n  {\n    \"jsonrpc\": \"2.0\",\n    \"id\": 1,\n    \"method\": \"getMultipleAccounts\",\n    \"params\": [\n      [\n        \"vines1vzrYbzLMRdu58ou5XTby4qAqVRLmqo36NKPTg\",\n        \"4fYNw3dojWmQ4dXtSGE9epjRGy9pFSx62YypT7avPYvA\"\n      ],\n      {\n        \"encoding\": \"base58\"\n      }\n    ]\n  }\n"
+				},
+				"url": "https://api.devnet.solana.com",
+				"description": "Returns the account information for a list of Pubkeys.\n\n### Parameters:\n\n`array` optional\n\nAn array of Pubkeys to query, as base-58 encoded strings (up to a maximum of 100)\n\n`object` optional\n\nConfiguration object containing the following fields:\n\n[commitment](https://docs.solana.com/api/http#configuring-state-commitment) `string` optional\n\nminContextSlot `number` optional\n\nThe minimum slot that the request can be evaluated at\n\ndataSlice `object` optional\n\nRequest a slice of the account's data.\n\n- `length:` \\- number of bytes to return\n- `offset:` \\- byte offset from which to start reading\n\ninfo\n\nData slicing is only available for `base58`, `base64`, or `base64+zstd` encodings.\n\n[encoding](https://docs.solana.com/api/http#parsed-responses) `string` optionalDefault: `json`\n\nencoding format for the returned Account data\n\nValues: `jsonParsedbase58base64base64+zstd`"
+			},
+			"response": []
+		},
+		{
+			"name": "getProgramAccounts",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "\n  {\n    \"jsonrpc\": \"2.0\",\n    \"id\": 1,\n    \"method\": \"getProgramAccounts\",\n    \"params\": [\n      \"4Nd1mBQtrMJVYVfKf2PJy9NZUZdTAsp7D4xWLs4gDB4T\",\n      {\n        \"filters\": [\n          {\n            \"dataSize\": 17\n          },\n          {\n            \"memcmp\": {\n              \"offset\": 4,\n              \"bytes\": \"3Mc6vR\"\n            }\n          }\n        ]\n      }\n    ]\n  }\n"
+				},
+				"url": "https://api.devnet.solana.com",
+				"description": "Returns all accounts owned by the provided program Pubkey\n\n### Parameters:\n\n`string` required\n\nPubkey of program, as base-58 encoded string\n\n`object` optional\n\nConfiguration object containing the following fields:\n\n[commitment](https://docs.solana.com/api/http#configuring-state-commitment) `string` optional\n\nminContextSlot `number` optional\n\nThe minimum slot that the request can be evaluated at\n\nwithContext `bool` optional\n\nwrap the result in an RpcResponse JSON object\n\n[encoding](https://docs.solana.com/api/http#parsed-responses) `string` optionalDefault: `json`\n\nencoding format for the returned Account data\n\nValues: `jsonParsedbase58base64base64+zstd`\n\nDetails\n\ndataSlice `object` optional\n\nRequest a slice of the account's data.\n\n- `length:` - number of bytes to return\n- `offset:` - byte offset from which to start reading\n    \n\ninfo\n\nData slicing is only available for `base58`, `base64`, or `base64+zstd` encodings.\n\n[filters](https://docs.solana.com/api/http#filter-criteria) `array` optional\n\nfilter results using up to 4 filter objects\n\n> info \n  \n> The resultant account(s) must meet **ALL** filter criteria to be included in the returned results"
+			},
+			"response": []
+		},
+		{
+			"name": "getRecentPerformanceSamples",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "\n  {\n    \"jsonrpc\":\"2.0\", \"id\":1,\n    \"method\": \"getRecentPerformanceSamples\",\n    \"params\": [4]}\n"
+				},
+				"url": "https://api.devnet.solana.com",
+				"description": "Returns a list of recent performance samples, in reverse slot order. Performance samples are taken every 60 seconds and  \ninclude the number of transactions and slots that occur in a given time window.\n\n### Parameters:\n\nlimit `usize` optional\n\nnumber of samples to return (maximum 720)"
+			},
+			"response": []
+		},
+		{
+			"name": "getRecentPrioritizationFees",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "\n  {\n    \"jsonrpc\":\"2.0\", \"id\":1,\n    \"method\": \"getRecentPrioritizationFees\",\n    \"params\": [\n      [\"CxELquR1gPP8wHe33gZ4QxqGB3sZ9RSwsJ2KshVewkFY\"]\n    ]\n  }\n"
+				},
+				"url": "https://api.devnet.solana.com",
+				"description": "Returns a list of prioritization fees from recent blocks.\n\ninfo\n\nCurrently, a node's prioritization-fee cache stores data from up to 150 blocks.\n\n### Parameters:\n\n`array` optional\n\nAn array of Account addresses (up to a maximum of 128 addresses), as base-58 encoded strings\n\n> note \n  \n> If  \nthis parameter is provided, the response will reflect a fee to land a  \ntransaction locking all of the provided accounts as writable."
+			},
+			"response": []
+		},
+		{
+			"name": "getSignaturesForAddress",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "\n  {\n    \"jsonrpc\": \"2.0\",\n    \"id\": 1,\n    \"method\": \"getSignaturesForAddress\",\n    \"params\": [\n      \"Vote111111111111111111111111111111111111111\",\n      {\n        \"limit\": 1\n      }\n    ]\n  }\n"
+				},
+				"url": "https://api.devnet.solana.com",
+				"description": "Returns signatures for confirmed transactions that include the given address in  \ntheir `accountKeys` list. Returns signatures backwards in time from the  \nprovided signature or most recent confirmed block\n\n### Parameters:\n\n`string` required\n\nAccount address as base-58 encoded string\n\n`object` optional\n\nConfiguration object containing the following fields:\n\n[commitment](https://docs.solana.com/api/http#configuring-state-commitment) `string` optional\n\nminContextSlot `number` optional\n\nThe minimum slot that the request can be evaluated at\n\nlimit `number` optionalDefault: `1000`\n\nmaximum transaction signatures to return (between 1 and 1,000).\n\nbefore `string` optional\n\nstart  \nsearching backwards from this transaction signature. If not provided  \nthe search starts from the top of the highest max confirmed block.\n\nuntil `string` optional\n\nsearch until this transaction signature, if found before limit reached"
+			},
+			"response": []
+		},
+		{
+			"name": "getSignatureStatuses",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "\n  {\n    \"jsonrpc\": \"2.0\",\n    \"id\": 1,\n    \"method\": \"getSignatureStatuses\",\n    \"params\": [\n      [\n        \"5VERv8NMvzbJMEkV8xnrLkEaWRtSz9CosKDYjCJjBRnbJLgp8uirBgmQpjKhoR4tjF3ZpRzrFmBV6UjKdiSZkQUW\"\n      ],\n      {\n        \"searchTransactionHistory\": true\n      }\n    ]\n  }\n"
+				},
+				"url": "https://api.devnet.solana.com",
+				"description": "Returns the statuses of a list of signatures. Each signature must be a [txid](https://docs.solana.com/terminology#transaction-id), the first signature of a transaction.\n\n> info \n  \n> Unless the `searchTransactionHistory` configuration parameter is included,  \nthis method only searches the recent status cache of signatures, which  \nretains statuses for all active slots plus `MAX_RECENT_BLOCKHASHES` rooted slots. \n  \n\n### Parameters:\n\n`array` optional\n\nAn array of transaction signatures to confirm, as base-58 encoded strings (up to a maximum of 256)\n\n`object` optional\n\nConfiguration object containing the following fields:\n\nsearchTransactionHistory `bool` optional\n\nif `true` - a Solana node will search its ledger cache for any signatures not  \nfound in the recent status cache"
+			},
+			"response": []
+		},
+		{
+			"name": "getSlot",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "\n  {\"jsonrpc\":\"2.0\",\"id\":1, \"method\":\"getSlot\"}\n"
+				},
+				"url": "https://api.devnet.solana.com",
+				"description": "Returns the slot that has reached the [given or default commitment level](https://docs.solana.com/api/http#configuring-state-commitment)\n\n### Parameters:\n\n`object` optional\n\nConfiguration object containing the following fields:\n\n[commitment](https://docs.solana.com/api/http#configuring-state-commitment) `string` optional\n\nminContextSlot `number` optional\n\nThe minimum slot that the request can be evaluated at"
+			},
+			"response": []
+		},
+		{
+			"name": "getSlotLeader",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "\n  {\"jsonrpc\":\"2.0\",\"id\":1, \"method\":\"getSlotLeader\"}\n"
+				},
+				"url": "https://api.devnet.solana.com",
+				"description": "Returns the current slot leader\n\n### Parameters:\n\n`object` optional\n\nConfiguration object containing the following fields:\n\n[commitment](https://docs.solana.com/api/http#configuring-state-commitment) `string` optional\n\nminContextSlot `number` optional\n\nThe minimum slot that the request can be evaluated at"
+			},
+			"response": []
+		},
+		{
+			"name": "getSlotLeaders",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "\n  {\n    \"jsonrpc\":\"2.0\", \"id\": 1,\n    \"method\": \"getSlotLeaders\",\n    \"params\": [100, 10]\n  }\n"
+				},
+				"url": "https://api.devnet.solana.com",
+				"description": "Returns the slot leaders for a given slot range\n\n### Parameters:\n\n`u64` optional\n\nStart slot, as u64 integer\n\n`u64` optional\n\nLimit, as u64 integer (between 1 and 5,000)"
+			},
+			"response": []
+		},
+		{
+			"name": "getStakeActivation",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "\n  {\n    \"jsonrpc\": \"2.0\",\n    \"id\": 1,\n    \"method\": \"getStakeActivation\",\n    \"params\": [\n      \"CYRJWqiSjLitBAcRxPvWpgX3s5TvmN2SuRY3eEYypFvT\",\n      {\n        \"epoch\": 100\n      }\n    ]\n  }\n"
+				},
+				"url": "https://api.devnet.solana.com",
+				"description": "Returns epoch activation information for a stake account\n\n### Parameters:\n\n`string` required\n\nPubkey of stake Account to query, as base-58 encoded string\n\n`object` optional\n\nConfiguration object containing the following fields:\n\n[commitment](https://docs.solana.com/api/http#configuring-state-commitment) `string` optional\n\nminContextSlot `number` optional\n\nThe minimum slot that the request can be evaluated at\n\nepoch `u64` optional\n\nepoch for which to calculate activation details. If parameter not provided, defaults to current epoch."
+			},
+			"response": []
+		},
+		{
+			"name": "getStakeMinimumDelegation",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "\n  {\n    \"jsonrpc\":\"2.0\", \"id\":1,\n    \"method\": \"getStakeMinimumDelegation\"\n  }\n"
+				},
+				"url": "https://api.devnet.solana.com",
+				"description": "Returns the stake minimum delegation, in lamports.\n\n### Parameters:\n\n`object` optional\n\nConfiguration object containing the following fields:\n\n[commitment](https://docs.solana.com/api/http#configuring-state-commitment) `string` optional"
+			},
+			"response": []
+		},
+		{
+			"name": "getSupply",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "\n  {\"jsonrpc\":\"2.0\", \"id\":1, \"method\":\"getSupply\"}\n"
+				},
+				"url": "https://api.devnet.solana.com",
+				"description": "Returns information about the current supply.\n\n### Parameters:\n\n`object` optional\n\nConfiguration object containing the following fields:\n\n[commitment](https://docs.solana.com/api/http#configuring-state-commitment) `string` optional\n\nexcludeNonCirculatingAccountsList `bool` optional\n\nexclude non circulating accounts list from response"
+			},
+			"response": []
+		},
+		{
+			"name": "getTokenAccountBalance",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "\n  {\n    \"jsonrpc\": \"2.0\", \"id\": 1,\n    \"method\": \"getTokenAccountBalance\",\n    \"params\": [\n      \"2WFWK1QDSWXQuJ9ZzdaR7Hpg1dVqJGdn5TNDcT4CdQC3\"\n    ]\n  }\n"
+				},
+				"url": "https://api.devnet.solana.com",
+				"description": "Returns the token balance of an SPL Token account.\n\n### Parameters:\n\n`string` required\n\nPubkey of Token account to query, as base-58 encoded string\n\n`object` optional\n\nConfiguration object containing the following fields:\n\n[commitment](https://docs.solana.com/api/http#configuring-state-commitment) `string` optional"
+			},
+			"response": []
+		},
+		{
+			"name": "getTokenAccountsByDelegate",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "\n  {\n    \"jsonrpc\": \"2.0\",\n    \"id\": 1,\n    \"method\": \"getTokenAccountsByDelegate\",\n    \"params\": [\n      \"4Nd1mBQtrMJVYVfKf2PJy9NZUZdTAsp7D4xWLs4gDB4T\",\n      {\n        \"programId\": \"TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA\"\n      },\n      {\n        \"encoding\": \"jsonParsed\"\n      }\n    ]\n  }\n"
+				},
+				"url": "https://api.devnet.solana.com",
+				"description": "Returns all SPL Token accounts by approved Delegate.\n\n### Parameters:\n\n`string` required\n\nPubkey of account delegate to query, as base-58 encoded string\n\n`object` optional\n\nA JSON object with one of the following fields:\n\n- `mint:` \\- Pubkey of the specific token Mint to limit accounts to, as base-58 encoded string; or\n- `programId:` \\- Pubkey of the Token program that owns the accounts, as base-58 encoded string\n\n`object` optional\n\nConfiguration object containing the following fields:\n\n[commitment](https://docs.solana.com/api/http#configuring-state-commitment) `string` optional\n\nminContextSlot `number` optional\n\nThe minimum slot that the request can be evaluated at\n\ndataSlice `object` optional\n\nRequest a slice of the account's data.\n\n- `length:` \\- number of bytes to return\n- `offset:` \\- byte offset from which to start reading\n\n> info \n  \n> Data slicing is only available for `base58`, `base64`, or `base64+zstd` encodings. \n  \n\n[encoding](https://docs.solana.com/api/http#parsed-responses) `string` optional\n\nEncoding format for Account data\n\nValues: `base58base64base64+zstdjsonParsed`"
+			},
+			"response": []
+		},
+		{
+			"name": "getTokenAccountsByOwner",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "\n  {\n    \"jsonrpc\": \"2.0\",\n    \"id\": 1,\n    \"method\": \"getTokenAccountsByOwner\",\n    \"params\": [\n      \"B3BhJ1nvPvEhx3hq3nfK8hx4WYcKZdbhavSobZEA44ai\",\n      {\n        \"mint\": \"C2T7Zff6DTzFnFeEd715Qe2etXLXZwauEEjMC2NJ7tpG\"\n      },\n      {\n        \"encoding\": \"jsonParsed\"\n      }\n    ]\n  }\n"
+				},
+				"url": "https://api.devnet.solana.com",
+				"description": "Returns all SPL Token accounts by token owner.\n\n### Parameters:\n\n`string` required\n\nPubkey of account delegate to query, as base-58 encoded string\n\n`object` optional\n\nA JSON object with one of the following fields:\n\n- `mint:` \\- Pubkey of the specific token Mint to limit accounts to, as base-58 encoded string; or\n- `programId:` \\- Pubkey of the Token program that owns the accounts, as base-58 encoded string\n\n`object` optional\n\nConfiguration object containing the following fields:\n\n[commitment](https://docs.solana.com/api/http#configuring-state-commitment) `string` optional\n\nminContextSlot `number` optional\n\nThe minimum slot that the request can be evaluated at\n\ndataSlice `object` optional\n\nRequest a slice of the account's data.\n\n- `length:` \\- number of bytes to return\n- `offset:` \\- byte offset from which to start reading\n\n> info \n  \n> Data slicing is only available for `base58`, `base64`, or `base64+zstd` encodings. \n  \n\n[encoding](https://docs.solana.com/api/http#parsed-responses) `string` optional\n\nEncoding format for Account data\n\nValues: `base58base64base64+zstdjsonParsed`"
+			},
+			"response": []
+		},
+		{
+			"name": "getTokenLargestAccounts",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "\n  {\n    \"jsonrpc\": \"2.0\", \"id\": 1,\n    \"method\": \"getTokenLargestAccounts\",\n    \"params\": [\n      \"C2T7Zff6DTzFnFeEd715Qe2etXLXZwauEEjMC2NJ7tpG\"\n    ]\n  }\n"
+				},
+				"url": "https://api.devnet.solana.com",
+				"description": "Returns the 20 largest accounts of a particular SPL Token type.\n\n### Parameters:\n\n`string` required\n\nPubkey of the token Mint to query, as base-58 encoded string\n\n`object` optional\n\nConfiguration object containing the following fields:\n\n[commitment](https://docs.solana.com/api/http#configuring-state-commitment) `string` optional"
+			},
+			"response": []
+		},
+		{
+			"name": "getTokenSupply",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "\n  {\n    \"jsonrpc\": \"2.0\", \"id\": 1,\n    \"method\": \"getTokenSupply\",\n    \"params\": [\n      \"C2T7Zff6DTzFnFeEd715Qe2etXLXZwauEEjMC2NJ7tpG\"\n    ]\n  }\n"
+				},
+				"url": "https://api.devnet.solana.com",
+				"description": "Returns the total supply of an SPL Token type.\n\n### Parameters:\n\n`string` required\n\nPubkey of the token Mint to query, as base-58 encoded string\n\n`object` optional\n\nConfiguration object containing the following fields:\n\n[commitment](https://docs.solana.com/api/http#configuring-state-commitment) `string` optional"
+			},
+			"response": []
+		},
+		{
+			"name": "getTransaction",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "\n  {\n    \"jsonrpc\": \"2.0\",\n    \"id\": 1,\n    \"method\": \"getTransaction\",\n    \"params\": [\n      \"nZhS2nxqSecEofbLMPykoGutZJpeLtE2XxJhRRJuD6j1kyxQNv2fwT5V5qtcxTFgQYNWV4FS21eZCb3aLCTtLH3\",\n      \"json\"\n    ]\n  }\n"
+				},
+				"url": "https://api.devnet.solana.com",
+				"description": "Returns transaction details for a confirmed transaction\n\n### Parameters:\n\n`string` required\n\nTransaction signature, as base-58 encoded string\n\n`object` optional\n\nConfiguration object containing the following fields:\n\n[commitment](https://docs.solana.com/api/http#configuring-state-commitment) `string` optional\n\nmaxSupportedTransactionVersion `number` optional\n\nSet  \nthe max transaction version to return in responses. If the requested  \ntransaction is a higher version, an error will be returned. If this  \nparameter is omitted, only legacy transactions will be returned, and any  \nversioned transaction will prompt the error.\n\n[encoding](https://docs.solana.com/api/http#parsed-responses) `string` optionalDefault: `json`\n\nEncoding for the returned Transaction\n\nValues: `jsonjsonParsedbase64base58`"
+			},
+			"response": []
+		},
+		{
+			"name": "getVersion",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "\n  {\"jsonrpc\":\"2.0\",\"id\":1, \"method\":\"getVersion\"}\n"
+				},
+				"url": "https://api.devnet.solana.com",
+				"description": "Returns the current Solana version running on the node\n\n### Parameters:\n\n**None**"
+			},
+			"response": []
+		},
+		{
+			"name": "getTransactionCount",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "\n  {\"jsonrpc\":\"2.0\",\"id\":1, \"method\":\"getTransactionCount\"}\n"
+				},
+				"url": "https://api.devnet.solana.com",
+				"description": "Returns the current Transaction count from the ledger\n\n### Parameters:\n\n`object` optional\n\nConfiguration object containing the following fields:\n\n[commitment](https://docs.solana.com/api/http#configuring-state-commitment) `string` optional\n\nminContextSlot `number` optional\n\nThe minimum slot that the request can be evaluated at"
+			},
+			"response": []
+		},
+		{
+			"name": "getVersion",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "\n  {\"jsonrpc\":\"2.0\",\"id\":1, \"method\":\"getVersion\"}\n"
+				},
+				"url": "https://api.devnet.solana.com"
+			},
+			"response": []
+		},
+		{
+			"name": "getVoteAccounts",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "\n  {\n    \"jsonrpc\": \"2.0\",\n    \"id\": 1,\n    \"method\": \"getVoteAccounts\",\n    \"params\": [\n      {\n        \"votePubkey\": \"3ZT31jkAGhUaw8jsy4bTknwBMP8i4Eueh52By4zXcsVw\"\n      }\n    ]\n  }\n"
+				},
+				"url": "https://api.devnet.solana.com",
+				"description": "Returns the account info and associated stake for all the voting accounts in the current bank.\n\n### Parameters:\n\n`object` optional\n\nConfiguration object containing the following fields:\n\n[commitment](https://docs.solana.com/api/http#configuring-state-commitment) `string` optional\n\nvotePubkey `string` optional\n\nOnly return results for this validator vote address (base-58 encoded)\n\nkeepUnstakedDelinquents `bool` optional\n\nDo not filter out delinquent validators with no stake\n\ndelinquentSlotDistance `u64` optional\n\nSpecify  \nthe number of slots behind the tip that a validator must fall to be  \nconsidered delinquent. **NOTE:** For the sake of consistency between  \necosystem products, _it is **not** recommended that this argument be  \nspecified._"
+			},
+			"response": []
+		},
+		{
+			"name": "isBlockhashValid",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "\n  {\n    \"id\":45,\n    \"jsonrpc\":\"2.0\",\n    \"method\":\"isBlockhashValid\",\n    \"params\":[\n      \"J7rBdM6AecPDEZp8aPq5iPSNKVkU5Q76F3oAV4eW5wsW\",\n      {\"commitment\":\"processed\"}\n    ]\n  }\n"
+				},
+				"url": "https://api.devnet.solana.com",
+				"description": "Returns whether a blockhash is still valid or not\n\n> caution \n  \n> NEW: This method is only available in solana-core v1.9 or newer. Please use  \n[getFeeCalculatorForBlockhash](https://docs.solana.com/api/http#getfeecalculatorforblockhash) for solana-core v1.8 \n  \n\n### Parameters:\n\n`string` required\n\nthe blockhash of the block to evauluate, as base-58 encoded string\n\n`object` optional\n\nConfiguration object containing the following fields:\n\n[commitment](https://docs.solana.com/api/http#configuring-state-commitment) `string` optional\n\nminContextSlot `number` optional\n\nThe minimum slot that the request can be evaluated at"
+			},
+			"response": []
+		},
+		{
+			"name": "minimumLedgerSlot",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "\n  {\"jsonrpc\":\"2.0\",\"id\":1, \"method\":\"minimumLedgerSlot\"}\n"
+				},
+				"url": "https://api.devnet.solana.com",
+				"description": "eturns the lowest slot that the node has information about in its ledger.\n\n> info \n  \n> This value may increase over time if the node is configured to purge older ledger data \n  \n\n### Parameters:\n\n**None**"
+			},
+			"response": []
+		},
+		{
+			"name": "requestAirdrop",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "\n  {\n    \"jsonrpc\": \"2.0\", \"id\": 1,\n    \"method\": \"requestAirdrop\",\n    \"params\": [\n      \"83astBRguLMdt2h5U1Tpdq5tjFoJ6noeGwaY3mDLVcri\",\n      1000000000\n    ]\n  }\n"
+				},
+				"url": "https://api.devnet.solana.com",
+				"description": "Requests an airdrop of lamports to a Pubkey\n\n### Parameters:\n\n`string` required\n\nPubkey of account to receive lamports, as a base-58 encoded string\n\n`integer` required\n\nlamports to airdrop, as a \"u64\"\n\n`object` optional\n\nConfiguration object containing the following fields:\n\n[commitment](https://docs.solana.com/api/http#configuring-state-commitment) `string` optional"
+			},
+			"response": []
+		},
+		{
+			"name": "sendTransaction",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "\n  {\n    \"jsonrpc\": \"2.0\",\n    \"id\": 1,\n    \"method\": \"sendTransaction\",\n    \"params\": [\n      \"4hXTCkRzt9WyecNzV1XPgCDfGAZzQKNxLXgynz5QDuWWPSAZBZSHptvWRL3BjCvzUXRdKvHL2b7yGrRQcWyaqsaBCncVG7BFggS8w9snUts67BSh3EqKpXLUm5UMHfD7ZBe9GhARjbNQMLJ1QD3Spr6oMTBU6EhdB4RD8CP2xUxr2u3d6fos36PD98XS6oX8TQjLpsMwncs5DAMiD4nNnR8NBfyghGCWvCVifVwvA8B8TJxE1aiyiv2L429BCWfyzAme5sZW8rDb14NeCQHhZbtNqfXhcp2tAnaAT\"\n    ]\n  }\n"
+				},
+				"url": "https://api.devnet.solana.com",
+				"description": "Submits a signed transaction to the cluster for processing.\n\nThis method does not alter the transaction in any way; it relays the  \ntransaction created by clients to the node as-is.\n\nIf the node's rpc service receives the transaction, this method immediately  \nsucceeds, without waiting for any confirmations. A successful response from  \nthis method does not guarantee the transaction is processed or confirmed by the  \ncluster.\n\nWhile the rpc service will reasonably retry to submit it, the transaction  \ncould be rejected if transaction's `recent_blockhash` expires before it lands.\n\nUse [`getSignatureStatuses`](https://docs.solana.com/api/http#getsignaturestatuses) to ensure a transaction is processed and confirmed.\n\nBefore submitting, the following preflight checks are performed:\n\n1. The transaction signatures are verified\n2. The transaction is simulated against the bank slot specified by the preflight  \n    commitment. On failure an error will be returned. Preflight checks may be  \n    disabled if desired. It is recommended to specify the same commitment and  \n    preflight commitment to avoid confusing behavior.\n    \n\nThe returned signature is the first signature in the transaction, which  \nis used to identify the transaction ([transaction id](https://docs.solana.com/terminology#transaction-id)).  \nThis identifier can be easily extracted from the transaction data before  \nsubmission.\n\n### Parameters:\n\n`string` required\n\nFully-signed Transaction, as encoded string.\n\n`object` optional\n\nConfiguration object containing the following optional fields:\n\n[encoding](https://docs.solana.com/api/http#parsed-responses) `string` Default: `base58`\n\nEncoding used for the transaction data.\n\nValues: `base58` (_slow_, **DEPRECATED**), or `base64`.\n\nskipPreflight `bool` Default: `false`\n\nif \"true\", skip the preflight transaction checks\n\n[preflightCommitment](https://docs.solana.com/api/http#configuring-state-commitment) `string` Default: `finalized`\n\nCommitment level to use for preflight.\n\nmaxRetries `usize`\n\nMaximum  \nnumber of times for the RPC node to retry sending the transaction to  \nthe leader. If this parameter not provided, the RPC node will retry the  \ntransaction until it is finalized or until the blockhash expires.\n\nminContextSlot `number`\n\nset the minimum slot at which to perform preflight transaction checks"
+			},
+			"response": []
+		},
+		{
+			"name": "simulateTransaction",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "\n  {\n    \"jsonrpc\": \"2.0\",\n    \"id\": 1,\n    \"method\": \"simulateTransaction\",\n    \"params\": [\n      \"AQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAEDArczbMia1tLmq7zz4DinMNN0pJ1JtLdqIJPUw3YrGCzYAMHBsgN27lcgB6H2WQvFgyZuJYHa46puOQo9yQ8CVQbd9uHXZaGT2cvhRs7reawctIXtX1s3kTqM9YV+/wCp20C7Wj2aiuk5TReAXo+VTVg8QTHjs0UjNMMKCvpzZ+ABAgEBARU=\",\n      {\n        \"encoding\":\"base64\",\n      }\n    ]\n  }\n"
+				},
+				"url": "https://api.devnet.solana.com",
+				"description": "Simulate sending a transaction\n\n### Parameters:\n\n`string` required\n\nTransaction, as an encoded string.\n\nnote\n\nThe transaction must have a valid blockhash, but is not required to be signed.\n\n`object` optional\n\nConfiguration object containing the following fields:\n\n[commitment](https://docs.solana.com/api/http#configuring-state-commitment) `string` optionalDefault: `finalized`\n\nCommitment level to simulate the transaction at\n\nsigVerify `bool` optional\n\nif \\`true\\` the transaction signatures will be verified (conflicts with \\`replaceRecentBlockhash\\`)\n\nreplaceRecentBlockhash `bool` optional\n\nif \\`true\\` the transaction recent blockhash will be replaced with the most recent blockhash. (conflicts with \\`sigVerify\\`)\n\nminContextSlot `number` optional\n\nthe minimum slot that the request can be evaluated at\n\nencoding `string` optionalDefault: `base58`\n\nEncoding used for the transaction data.\n\nValues: `base58` (_slow_, **DEPRECATED**), or `base64`.\n\naccounts `object` optional\n\nAccounts configuration object containing the following fields:\n\naddresses `array`\n\nAn \\`array\\` of accounts to return, as base-58 encoded strings\n\nencoding `string` Default: `base64`\n\nencoding for returned Account data\n\nValues: `base64base58base64+zstdjsonParsed`"
+			},
+			"response": []
+		}
+	]
+}
